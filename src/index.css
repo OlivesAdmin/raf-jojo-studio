@@ -33,7 +33,7 @@
   * { @apply border-border; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
   html { scroll-behavior: smooth; background: #050510 !important; }
   body { font-family: 'Outfit', sans-serif; background: #050510 !important; color: #E8ECF4; overflow-x: hidden; margin: 0; }
-  #root { background: #050510; min-height: 100vh; padding-top: 36px; }
+  #root { background: #050510; min-height: 100vh; }
 }
 html, body, #root, .bg-background { background-color: #050510 !important; }
 

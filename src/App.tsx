@@ -28,7 +28,13 @@ function App() {
   };
   return (
     <AppContext.Provider value={{ navigate, route, cart, setCart }}>
-      <div className="min-h-screen grain relative" style={{ background: '#06080D', color: '#E2E8F0' }}>
+      <div className="min-h-screen noise relative" style={{ background: '#050510', color: '#E8ECF4' }}>
+        {/* Launch Promo Banner — scrolls with page, not fixed */}
+        <div className="bg-gradient-to-r from-amber-600 to-orange-500 text-center py-2.5 px-4">
+          <p className="text-[13px] sm:text-[14px] font-bold text-white">
+            🔥 LAUNCH OFFER: 50% OFF for first 10 customers — Code: <span className="bg-white/20 px-2 py-0.5 rounded font-extrabold">LAUNCH50</span>
+          </p>
+        </div>
         <Header />
         <main>
           {route.page === "home" && <HomePage />}
@@ -52,13 +58,6 @@ function App() {
           </svg>
           <span className="text-[14px] font-bold text-white hidden sm:inline">Chat with us</span>
         </a>
-
-        {/* Launch Promo Top Banner — sticky */}
-        <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-amber-600 to-orange-500 text-center py-2 px-4">
-          <p className="text-[13px] sm:text-[14px] font-bold text-white">
-            🔥 LAUNCH OFFER: 50% OFF for first 10 customers — Code: <span className="bg-white/20 px-2 py-0.5 rounded font-extrabold">LAUNCH50</span>
-          </p>
-        </div>
       </div>
     </AppContext.Provider>
   );
