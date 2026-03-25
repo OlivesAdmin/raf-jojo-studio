@@ -25,36 +25,18 @@ export function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 lg:py-0 w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center">
             <div className="anim">
-              {/* 🔥 LAUNCH PROMO BANNER */}
-              <div className="mb-5 px-4 py-3 rounded-xl bg-gradient-to-r from-amber-500/15 to-orange-500/10 border border-amber-500/20 flex items-start sm:items-center gap-3">
-                <span className="text-[22px] flex-shrink-0">🔥</span>
-                <div>
-                  <p className="text-[15px] sm:text-[16px] font-bold text-amber-300">Launch Offer — 50% OFF for first 10 customers!</p>
-                  <p className="text-[13px] sm:text-[14px] text-amber-200/50 mt-0.5">Limited spots. Use code <span className="font-bold text-amber-300">LAUNCH50</span> at checkout.</p>
-                </div>
-              </div>
-
-              {/* Badge */}
-              <div className="badge mb-4 sm:mb-6">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inset-0 rounded-full bg-violet-400" style={{animation:'pulse-dot 2s cubic-bezier(0,0,0.2,1) infinite'}} />
-                  <span className="relative rounded-full h-2 w-2 bg-violet-500" />
-                </span>
-                <span className="text-[15px] sm:text-[15px] font-medium text-violet-300/80">No sales calls — buy & launch instantly</span>
-              </div>
-
-              {/* OVERSIZED HEADLINE — key Dribbble technique */}
-              <h1 className="display text-[2rem] sm:text-[3.2rem] lg:text-[4rem] xl:text-[4.6rem] font-extrabold leading-[0.95] tracking-tight mb-4 sm:mb-5">
+              {/* OVERSIZED HEADLINE — straight to the point */}
+              <h1 className="display text-[2.2rem] sm:text-[3.2rem] lg:text-[4rem] xl:text-[4.6rem] font-extrabold leading-[0.95] tracking-tight mb-4 sm:mb-5">
                 <span className="text-white">Digital</span><br className="hidden sm:block" />
                 <span className="text-white"> services,</span><br />
                 <span className="grad-text">ready to buy.</span>
               </h1>
 
-              <p className="text-[15px] sm:text-[15.5px] text-white/50 leading-relaxed mb-6 sm:mb-8 max-w-[420px]">
-                Websites, branding, SEO & social — with transparent pricing. Pick a package, pay, and we start building immediately.
+              <p className="text-[16px] sm:text-[17px] text-white/50 leading-relaxed mb-5 sm:mb-7 max-w-[440px]">
+                Websites, branding, SEO & social media — with transparent pricing. Pick a package, pay, and we start building immediately.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 mb-6 sm:mb-10">
+              <div className="flex flex-col sm:flex-row gap-3 mb-5 sm:mb-8">
                 <button onClick={()=>navigate("services")} className="group relative px-7 py-3.5 text-[14px] font-semibold text-white rounded-full overflow-hidden shadow-xl shadow-violet-600/20 text-center">
                   <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 group-hover:from-violet-500 group-hover:to-fuchsia-500 transition-all duration-300" />
                   <span className="relative flex items-center justify-center gap-2">Browse Services <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></span>
