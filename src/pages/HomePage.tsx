@@ -1,0 +1,362 @@
+import { useApp } from "../App";
+import { services, categories, bundles } from "../data/services";
+import { PricingCard } from "../components/PricingCard";
+import { ProjectCard, IMG } from "../components/ProjectShowcase";
+import type { PackageTier } from "../data/services";
+
+export function HomePage() {
+  const { navigate, setCart } = useApp();
+  const buy = (s: typeof services[0], t: PackageTier) => { setCart({ service: s, tier: t, addons: [] }); navigate("checkout"); };
+
+  const catMeta: Record<string, { color: string; grad: string; icon: JSX.Element }> = {
+    web: { color: "#7C3AED", grad: "from-violet-600 to-indigo-600", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-6 h-6"><rect x="3" y="4" width="18" height="14" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><circle cx="7" cy="6.5" r="0.5" fill="currentColor"/><circle cx="9.5" cy="6.5" r="0.5" fill="currentColor"/></svg> },
+    branding: { color: "#EC4899", grad: "from-pink-600 to-rose-500", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-6 h-6"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4m-2.93-7.07l-2.83 2.83m-8.48 8.48l-2.83 2.83m14.14 0l-2.83-2.83M6.34 6.34L3.51 3.51"/></svg> },
+    growth: { color: "#F59E0B", grad: "from-amber-500 to-orange-500", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-6 h-6"><polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/></svg> },
+  };
+
+  return (
+    <div className="overflow-x-hidden">
+      {/* ======= HERO ======= */}
+      <section className="relative overflow-hidden min-h-[85vh] sm:min-h-[90vh] flex items-center">
+        {/* Mesh blobs */}
+        <div className="mesh w-[400px] h-[400px] sm:w-[700px] sm:h-[700px] -top-48 -left-48 bg-violet-600/[0.07]" />
+        <div className="mesh w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] top-1/3 -right-32 bg-fuchsia-500/[0.05]" />
+        <div className="mesh w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] bottom-0 left-1/3 bg-amber-500/[0.03]" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-0 w-full relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div className="anim">
+              {/* Badge */}
+              <div className="badge mb-6 sm:mb-8">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inset-0 rounded-full bg-violet-400" style={{animation:'pulse-dot 2s cubic-bezier(0,0,0.2,1) infinite'}} />
+                  <span className="relative rounded-full h-2 w-2 bg-violet-500" />
+                </span>
+                <span className="text-[10.5px] sm:text-[11px] font-medium text-violet-300/80">No sales calls — buy & launch instantly</span>
+              </div>
+
+              {/* OVERSIZED HEADLINE — key Dribbble technique */}
+              <h1 className="display text-[2.4rem] sm:text-[3.2rem] lg:text-[4rem] xl:text-[4.6rem] font-extrabold leading-[0.95] tracking-tight mb-5 sm:mb-7">
+                <span className="text-white">Digital</span><br />
+                <span className="text-white">services,</span><br />
+                <span className="grad-text">ready to buy.</span>
+              </h1>
+
+              <p className="text-[14px] sm:text-[15.5px] text-white/30 leading-relaxed mb-8 sm:mb-10 max-w-[420px]">
+                Websites, branding, SEO & social — with transparent pricing. Pick a package, pay, and we start building immediately.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 mb-10 sm:mb-14">
+                <button onClick={()=>navigate("services")} className="group relative px-7 py-3.5 text-[12.5px] font-semibold text-white rounded-full overflow-hidden shadow-xl shadow-violet-600/20 text-center">
+                  <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 group-hover:from-violet-500 group-hover:to-fuchsia-500 transition-all duration-300" />
+                  <span className="relative flex items-center justify-center gap-2">Browse Services <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></span>
+                </button>
+                <button onClick={()=>navigate("services")} className="px-7 py-3.5 text-[12.5px] font-medium text-white/35 rounded-full border border-white/[0.06] hover:border-white/[0.12] hover:text-white/50 transition-all text-center">
+                  View Pricing
+                </button>
+              </div>
+
+              {/* Stats row — Dribbble style inline metrics */}
+              <div className="flex gap-6 sm:gap-10">
+                {[{v:"500+",l:"Projects"},{v:"4.9★",l:"Rating"},{v:"7d",l:"Avg Delivery"}].map(s=>(
+                  <div key={s.l}>
+                    <p className="text-[18px] sm:text-[22px] font-bold text-white display">{s.v}</p>
+                    <p className="text-[10px] sm:text-[11px] text-white/20 mt-0.5">{s.l}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Hero visual — real image with overlay */}
+            <div className="hidden lg:block anim d3 relative">
+              <div className="relative">
+                {/* Main hero image */}
+                <div className="rounded-2xl overflow-hidden neu shadow-2xl shadow-violet-900/20">
+                  <img src={IMG.hero1} alt="Digital design workspace" className="w-full aspect-[4/3] object-cover" loading="eager" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050510] via-transparent to-[#050510]/30 rounded-2xl" />
+                </div>
+                {/* Floating stat cards on top of hero image */}
+                <div className="absolute -bottom-6 -left-6 neu rounded-xl p-4 float" style={{animationDelay:'0s'}}>
+                  <p className="text-[10px] text-white/30 mb-1">Projects Delivered</p>
+                  <p className="display text-[24px] font-extrabold text-violet-400">500+</p>
+                </div>
+                <div className="absolute -top-4 -right-4 neu rounded-xl p-4 float" style={{animationDelay:'1.5s'}}>
+                  <p className="text-[10px] text-white/30 mb-1">Client Satisfaction</p>
+                  <p className="display text-[24px] font-extrabold text-amber-400">4.9★</p>
+                </div>
+                <div className="absolute top-1/2 -right-8 neu rounded-xl p-3 float" style={{animationDelay:'3s'}}>
+                  <p className="text-[10px] text-white/30 mb-1">Avg Delivery</p>
+                  <p className="display text-[20px] font-extrabold text-emerald-400">7 days</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom gradient fade */}
+        <div className="absolute bottom-0 inset-x-0 h-40" style={{background:'linear-gradient(180deg, transparent, #050510)'}} />
+      </section>
+
+      {/* ======= BENTO SERVICE CATEGORIES ======= */}
+      <section className="py-16 sm:py-28 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-10 sm:mb-14">
+            <div className="anim">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-violet-400/60 mb-2 block">Services</span>
+              <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight leading-tight">What we <span className="grad-text">build</span></h2>
+            </div>
+            <button onClick={()=>navigate("services")} className="text-[12px] font-medium text-white/25 hover:text-white/50 transition-colors mt-3 sm:mt-0 flex items-center gap-1.5">
+              All services <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </button>
+          </div>
+
+          {/* Bento grid — large + small cards with images */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+            {categories.map((cat, i) => {
+              const m = catMeta[cat.id];
+              const svcList = services.filter(s => s.category === cat.id);
+              const catImg = cat.id === 'web' ? IMG.web2 : cat.id === 'branding' ? IMG.graphic1 : IMG.seo1;
+              return (
+                <button key={cat.id} onClick={()=>navigate("services",{category:cat.id})} className={`group text-left neu rounded-2xl overflow-hidden anim`} style={{animationDelay:`${i*0.08}s`, opacity:0}}>
+                  {/* Category preview image */}
+                  <div className="relative h-[140px] sm:h-[160px] overflow-hidden">
+                    <img src={catImg} alt={cat.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d1025] via-[#0d1025]/50 to-transparent" />
+                    <div className="absolute top-3 left-3">
+                      <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${m.grad} flex items-center justify-center text-white shadow-lg`} style={{boxShadow:`0 6px 16px ${m.color}40`}}>
+                        {m.icon}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-5 sm:p-6">
+                    <h3 className="display text-[16px] sm:text-[18px] font-bold text-white mb-1.5 group-hover:text-violet-200 transition-colors">{cat.name}</h3>
+                    <p className="text-[11.5px] sm:text-[12.5px] text-white/25 leading-relaxed mb-4">{cat.description}</p>
+
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {svcList.map(s=>(
+                        <span key={s.slug} className="text-[9.5px] px-2.5 py-1 rounded-full bg-white/[0.04] text-white/25 border border-white/[0.03]">{s.short_name}</span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10.5px] text-white/15">From ${Math.min(...svcList.flatMap(s=>s.packages.map(p=>p.price)))}</span>
+                      <span className="text-[10.5px] font-semibold flex items-center gap-1 group-hover:gap-2 transition-all" style={{color:m.color}}>
+                        Explore <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                      </span>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ======= PORTFOLIO SHOWCASE ======= */}
+      <section className="py-16 sm:py-28 relative">
+        <div className="mesh w-[400px] h-[400px] -top-20 right-0 bg-fuchsia-500/[0.03]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-10 sm:mb-14">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-fuchsia-400/60 mb-2 block">Our Work</span>
+              <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight leading-tight">Recent <span className="grad-text">projects</span></h2>
+              <p className="text-white/20 text-[12.5px] mt-2 max-w-sm">Real results from real clients — here's what we've delivered recently.</p>
+            </div>
+            <button onClick={()=>navigate("services")} className="text-[12px] font-medium text-white/20 hover:text-white/50 transition-colors mt-3 sm:mt-0 flex items-center gap-1.5">
+              View all <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </button>
+          </div>
+
+          {/* Bento-style project grid with real images */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+            <div className="sm:col-span-2 lg:col-span-2">
+              <ProjectCard title="Bloom Beauty — E-commerce Website" category="Web Development" color="#7C3AED" imgSrc={IMG.web1} imgAlt="Modern e-commerce website on laptop" />
+            </div>
+            <div>
+              <ProjectCard title="TechFlow — Brand Identity" category="Logo Design" color="#EC4899" imgSrc={IMG.logo1} imgAlt="Brand identity design with color palette" />
+            </div>
+            <div>
+              <ProjectCard title="NovaPay — SEO Campaign" category="SEO / Search Boost" color="#F59E0B" imgSrc={IMG.seo1} imgAlt="Analytics dashboard showing growth metrics" />
+            </div>
+            <div>
+              <ProjectCard title="FreshBite — Social Presence" category="Social Media" color="#EC4899" imgSrc={IMG.social1} imgAlt="Social media content on phone" />
+            </div>
+            <div>
+              <ProjectCard title="Artisan Co. — Website Redesign" category="Web Redesign" color="#7C3AED" imgSrc={IMG.redesign1} imgAlt="Website redesign on laptop workspace" />
+            </div>
+          </div>
+
+          {/* Quick stats under portfolio */}
+          <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            {[
+              {icon:"💻", val:"120+", label:"Websites Built", color:"#7C3AED"},
+              {icon:"✦", val:"85+", label:"Logos Designed", color:"#EC4899"},
+              {icon:"📈", val:"60+", label:"SEO Campaigns", color:"#F59E0B"},
+              {icon:"📱", val:"40+", label:"Social Accounts", color:"#10B981"},
+            ].map(s=>(
+              <div key={s.label} className="neu rounded-xl p-4 sm:p-5 text-center">
+                <span className="text-[20px] sm:text-[24px] block mb-2">{s.icon}</span>
+                <p className="display text-[20px] sm:text-[24px] font-extrabold" style={{color:s.color}}>{s.val}</p>
+                <p className="text-[10px] sm:text-[11px] text-white/20 mt-1">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ======= HOW IT WORKS ======= */}
+      <section className="py-16 sm:py-28 relative">
+        <div className="mesh w-[500px] h-[300px] top-0 left-1/2 -translate-x-1/2 bg-violet-600/[0.04]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
+          <div className="text-center mb-10 sm:mb-14">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-amber-400/60 mb-2 block">Process</span>
+            <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">5 steps to <span className="grad-text">launch</span></h2>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 sm:gap-3">
+            {[
+              {n:"01",t:"Choose",d:"Pick your service",c:"#7C3AED",i:"M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"},
+              {n:"02",t:"Pay",d:"Secure checkout",c:"#A855F7",i:"M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"},
+              {n:"03",t:"Brief",d:"Quick intake form",c:"#EC4899",i:"M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"},
+              {n:"04",t:"Build",d:"We get to work",c:"#F59E0B",i:"M13 10V3L4 14h7v7l9-11h-7z"},
+              {n:"05",t:"Launch",d:"Go live",c:"#10B981",i:"M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"},
+            ].map((s,i)=>(
+              <div key={i} className={`neu rounded-xl p-4 sm:p-5 text-center group ${i===4?'col-span-2 sm:col-span-1':''}`}>
+                <div className="w-10 h-10 sm:w-11 sm:h-11 mx-auto mb-2.5 sm:mb-3 rounded-xl flex items-center justify-center" style={{background:`${s.c}12`}}>
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" style={{color:s.c}} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d={s.i}/></svg>
+                </div>
+                <span className="text-[9px] sm:text-[10px] font-bold block mb-0.5" style={{color:s.c}}>{s.n}</span>
+                <h3 className="text-[12px] sm:text-[13px] font-bold text-white/75 mb-0.5">{s.t}</h3>
+                <p className="text-[9px] sm:text-[10px] text-white/20">{s.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ======= FEATURED PRICING ======= */}
+      <section className="py-16 sm:py-28 relative">
+        <div className="mesh w-[500px] h-[500px] -top-20 -right-32 bg-violet-600/[0.05]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
+          <div className="text-center mb-10 sm:mb-14">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-violet-400/60 mb-2 block">Pricing</span>
+            <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">Website <span className="grad-text">Development</span></h2>
+            <p className="text-white/20 text-[12.5px] sm:text-[13px] mt-2">Our most popular service — pick a tier</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 max-w-[1020px] mx-auto mb-16 sm:mb-20">
+            {services[0].packages.map(p=><PricingCard key={p.name} pkg={p} onSelect={t=>buy(services[0],t)} />)}
+          </div>
+
+          <div className="divider mb-8 sm:mb-10" />
+          <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-white/10 mb-6 sm:mb-8">More Services</p>
+
+          {/* Mini service cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-[1020px] mx-auto">
+            {services.slice(1).map((s,i)=>{
+              const m = catMeta[s.category];
+              return (
+                <button key={s.slug} onClick={()=>navigate("service-detail",{slug:s.slug})} className="group text-left neu rounded-xl p-4 sm:p-5 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-full h-[2px]" style={{background:`linear-gradient(90deg, ${m.color}, transparent)`}} />
+                  <div className="flex items-center justify-between mb-2.5">
+                    <span className="text-[20px] sm:text-[22px]">{s.icon}</span>
+                    <span className="text-[10px] text-white/15 bg-white/[0.03] px-2 py-0.5 rounded-full border border-white/[0.03]">From ${s.packages[0].price}</span>
+                  </div>
+                  <h3 className="text-[13px] sm:text-[14px] font-bold text-white/75 mb-1 group-hover:text-violet-300 transition-colors display">{s.name}</h3>
+                  <p className="text-[10.5px] sm:text-[11px] text-white/18 line-clamp-2 mb-3">{s.outcome_statement}</p>
+                  <span className="text-[10px] font-semibold flex items-center gap-1 group-hover:gap-1.5 transition-all" style={{color:m.color}}>View packages <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg></span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ======= BUNDLES ======= */}
+      <section className="py-16 sm:py-28 relative">
+        <div className="mesh w-[400px] h-[400px] top-20 -right-32 bg-amber-500/[0.04]" />
+        <div className="max-w-[960px] mx-auto px-4 sm:px-8 relative">
+          <div className="text-center mb-10 sm:mb-14">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400/60 mb-2 block">Bundles</span>
+            <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">Save with <span className="grad-text">bundles</span></h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            {bundles.map(b=>(
+              <div key={b.id} className="neu rounded-2xl p-5 sm:p-7 relative overflow-hidden">
+                <div className="absolute -top-2.5 right-4 sm:right-6 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 text-[9px] font-bold uppercase tracking-wider text-white shadow-lg shadow-emerald-500/25">Save {b.discount}%</div>
+                <h3 className="display text-[17px] sm:text-[19px] font-bold text-white/90 mb-1">{b.name}</h3>
+                <p className="text-[11px] text-white/20 mb-4">{b.tagline}</p>
+                <div className="flex items-baseline gap-2 mb-4">
+                  <span className="display text-[26px] sm:text-[32px] font-extrabold text-white">${b.price.toLocaleString()}</span>
+                  <span className="text-[12px] text-white/15 line-through">${b.original_price.toLocaleString()}</span>
+                </div>
+                <ul className="space-y-2 mb-5">{b.services.map(slug=>{const sv=services.find(x=>x.slug===slug);return sv?<li key={slug} className="flex items-center gap-2 text-[11.5px] text-white/30"><span className="text-[14px]">{sv.icon}</span>{sv.name}</li>:null;})}</ul>
+                <button className="w-full py-2.5 text-[12px] font-semibold text-white/60 rounded-xl hover:text-white transition-all" style={{background:'rgba(255,255,255,0.03)',border:'1px solid rgba(255,255,255,0.05)'}}>Get Bundle — ${b.price.toLocaleString()}</button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ======= TESTIMONIALS ======= */}
+      <section className="py-16 sm:py-28 relative">
+        <div className="mesh w-[500px] h-[300px] bottom-0 -left-32 bg-violet-600/[0.04]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
+          <div className="text-center mb-10 sm:mb-14">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-violet-400/60 mb-2 block">Testimonials</span>
+            <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">Trusted by <span className="grad-text">500+</span> businesses</h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-14">
+            {[
+              {n:"Sarah Chen",r:"Founder, Bloom Beauty",q:"Purchased Premium website — live in 12 days. Quality exceeded agencies I've paid 5x more.",a:"SC",c:"#7C3AED",img:IMG.person1},
+              {n:"Marcus Rodriguez",r:"CEO, TechFlow",q:"Bought Gold logo, got 6 stunning concepts. Full brand kit in a week. Seamless experience.",a:"MR",c:"#EC4899",img:IMG.person2},
+              {n:"Aisha Patel",r:"Marketing Dir, NovaPay",q:"SEO package moved us from page 3 to #1 for key terms. ROI has been phenomenal.",a:"AP",c:"#F59E0B",img:IMG.person3},
+            ].map((t,i)=>(
+              <div key={i} className="neu rounded-2xl p-5 sm:p-6 relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-[2px]" style={{background:`linear-gradient(90deg, ${t.c}, transparent)`}} />
+                <div className="flex gap-0.5 mb-3 sm:mb-4">{Array.from({length:5}).map((_,j)=><svg key={j} className="w-3 h-3" style={{color:t.c}} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>)}</div>
+                <p className="text-[12px] text-white/30 leading-relaxed mb-4 italic">"{t.q}"</p>
+                <div className="flex items-center gap-2.5">
+                  <img src={t.img} alt={t.n} className="w-8 h-8 rounded-full object-cover border-2" style={{borderColor:`${t.c}30`}} />
+                  <div><p className="text-[11.5px] font-semibold text-white/65">{t.n}</p><p className="text-[10px] text-white/18">{t.r}</p></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 sm:pt-10" style={{borderTop:'1px solid rgba(255,255,255,0.03)'}}>
+            {[{v:"500+",l:"Projects",c:"#7C3AED"},{v:"4.9/5",l:"Satisfaction",c:"#EC4899"},{v:"7 days",l:"Avg Delivery",c:"#F59E0B"},{v:"98%",l:"On-Time",c:"#10B981"}].map(s=>(
+              <div key={s.l} className="text-center">
+                <p className="display text-[1.5rem] sm:text-[2rem] font-extrabold" style={{color:s.c}}>{s.v}</p>
+                <p className="text-[9.5px] sm:text-[10px] text-white/18 mt-0.5">{s.l}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ======= FINAL CTA ======= */}
+      <section className="py-20 sm:py-32 relative overflow-hidden">
+        <div className="mesh w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-violet-600/[0.06]" />
+        {/* Background image with heavy overlay */}
+        <div className="absolute inset-0">
+          <img src={IMG.team1} alt="" className="w-full h-full object-cover opacity-[0.04]" loading="lazy" />
+        </div>
+        {/* Decorative ring */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] rounded-full border border-white/[0.02]" style={{animation:'spin-slow 40s linear infinite'}} />
+        <div className="max-w-3xl mx-auto px-4 sm:px-8 text-center relative z-10">
+          <h2 className="display text-[1.8rem] sm:text-[2.6rem] lg:text-[3.4rem] font-extrabold tracking-tight mb-4 sm:mb-6">
+            Ready to<br /><span className="grad-text">get started?</span>
+          </h2>
+          <p className="text-white/20 text-[13px] sm:text-[14px] mb-8 sm:mb-10 max-w-md mx-auto leading-relaxed">Pick a package and we'll start building within 24 hours of purchase.</p>
+          <button onClick={()=>navigate("services")} className="group relative px-8 sm:px-10 py-3.5 sm:py-4 text-[12.5px] font-semibold text-white rounded-full overflow-hidden shadow-xl shadow-violet-600/20">
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 group-hover:from-violet-500 group-hover:to-fuchsia-500 transition-all duration-300" />
+            <span className="relative flex items-center justify-center gap-2">Browse All Services <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></span>
+          </button>
+        </div>
+      </section>
+    </div>
+  );
+}

@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npx parcel build index.html --no-source-maps --dist-dir dist",
+  "outputDirectory": "dist",
+  "installCommand": "npm install -g pnpm && pnpm install",
+  "framework": null
+}
