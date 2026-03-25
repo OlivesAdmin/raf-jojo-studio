@@ -267,15 +267,23 @@ export function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {bundles.map(b=>(
               <div key={b.id} className="neu rounded-2xl p-5 sm:p-7 relative overflow-hidden">
-                <div className="absolute -top-2.5 right-4 sm:right-6 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 text-[11px] font-bold uppercase tracking-wider text-white shadow-lg shadow-emerald-500/25">Save {b.discount}%</div>
-                <h3 className="display text-[17px] sm:text-[19px] font-bold text-white/90 mb-1">{b.name}</h3>
-                <p className="text-[15px] text-white/40 mb-4">{b.tagline}</p>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="display text-[26px] sm:text-[32px] font-extrabold text-white">${b.price.toLocaleString()}</span>
-                  <span className="text-[14px] text-white/30 line-through">${b.original_price.toLocaleString()}</span>
+                {/* Big savings banner */}
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 text-[14px] font-extrabold text-white shadow-lg shadow-emerald-500/25">
+                    SAVE {b.discount}%
+                  </span>
+                  <span className="text-[14px] text-emerald-400 font-bold">
+                    You save ${(b.original_price - b.price).toLocaleString()}!
+                  </span>
                 </div>
-                <ul className="space-y-2 mb-5">{b.services.map(slug=>{const sv=services.find(x=>x.slug===slug);return sv?<li key={slug} className="flex items-center gap-2 text-[14px] text-white/50"><span className="text-[14px]">{sv.icon}</span>{sv.name}</li>:null;})}</ul>
-                <button className="w-full py-2.5 text-[14px] font-semibold text-white/60 rounded-xl hover:text-white transition-all" style={{background:'rgba(255,255,255,0.03)',border:'1px solid rgba(255,255,255,0.05)'}}>Get Bundle — ${b.price.toLocaleString()}</button>
+                <h3 className="display text-[20px] sm:text-[22px] font-bold text-white mb-1">{b.name}</h3>
+                <p className="text-[15px] text-white/45 mb-4">{b.tagline}</p>
+                <div className="flex items-baseline gap-3 mb-5">
+                  <span className="display text-[32px] sm:text-[36px] font-extrabold text-white">${b.price.toLocaleString()}</span>
+                  <span className="text-[16px] text-white/30 line-through">${b.original_price.toLocaleString()}</span>
+                </div>
+                <ul className="space-y-2.5 mb-6">{b.services.map(slug=>{const sv=services.find(x=>x.slug===slug);return sv?<li key={slug} className="flex items-center gap-2.5 text-[15px] text-white/55"><span className="text-[16px]">{sv.icon}</span>{sv.name}</li>:null;})}</ul>
+                <button className="w-full py-3.5 text-[15px] font-bold text-white rounded-xl transition-all bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 shadow-lg shadow-emerald-600/20">Get Bundle — ${b.price.toLocaleString()}</button>
               </div>
             ))}
           </div>
