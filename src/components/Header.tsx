@@ -12,19 +12,19 @@ export function Header() {
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden relative">
             <div className="absolute inset-0 bg-gradient-to-br from-violet-600 via-fuchsia-500 to-rose-400" />
             <div className="absolute inset-[1.5px] bg-[#050510] rounded-[10px] flex items-center justify-center">
-              <span className="text-[10px] sm:text-[11px] font-extrabold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">R&J</span>
+              <span className="text-[12px] sm:text-[13px] font-extrabold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">R&J</span>
             </div>
           </div>
           <div className="hidden sm:block">
             <span className="text-[14px] font-bold text-white/90 display">Raf & JoJo</span>
-            <span className="text-[9px] text-white/25 block -mt-0.5 tracking-wider uppercase">Studio</span>
+            <span className="text-[11px] text-white/45 block -mt-0.5 tracking-wider uppercase">Studio</span>
           </div>
           <span className="sm:hidden text-[14px] font-bold text-white/90 display">R&J Studio</span>
         </button>
 
         <nav className="hidden md:flex items-center gap-0.5">
           {[{l:"Services",p:"services"},{l:"Process",p:"home"},{l:"Pricing",p:"home"}].map(n=>(
-            <button key={n.l} onClick={()=>navigate(n.p)} className="px-4 py-2 text-[12.5px] text-white/35 hover:text-white/70 transition-colors rounded-lg hover:bg-white/[0.03]">{n.l}</button>
+            <button key={n.l} onClick={()=>navigate(n.p)} className="px-4 py-2 text-[14px] text-white/55 hover:text-white/70 transition-colors rounded-lg hover:bg-white/[0.03]">{n.l}</button>
           ))}
         </nav>
 
@@ -44,9 +44,9 @@ export function Header() {
       {open && (
         <div className="md:hidden px-4 py-4 space-y-1" style={{ background:'rgba(5,5,16,0.98)', borderTop:'1px solid rgba(255,255,255,0.03)' }}>
           {["Services","Process","Pricing"].map(l=>(
-            <button key={l} onClick={()=>{navigate(l==="Services"?"services":"home");setOpen(false)}} className="block w-full text-left text-[13px] text-white/50 py-2.5 px-3 rounded-lg hover:bg-white/5">{l}</button>
+            <button key={l} onClick={()=>{navigate(l==="Services"?"services":"home");setOpen(false)}} className="block w-full text-left text-[14px] text-white/50 py-2.5 px-3 rounded-lg hover:bg-white/5">{l}</button>
           ))}
-          <button onClick={()=>{navigate("services");setOpen(false)}} className="w-full mt-2 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-[12.5px] font-semibold rounded-full text-center">Start a Project</button>
+          <button onClick={()=>{navigate("services");setOpen(false)}} className="w-full mt-2 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-[14px] font-semibold rounded-full text-center">Start a Project</button>
         </div>
       )}
     </header>

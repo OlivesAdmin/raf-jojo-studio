@@ -31,7 +31,7 @@ export function HomePage() {
                   <span className="absolute inset-0 rounded-full bg-violet-400" style={{animation:'pulse-dot 2s cubic-bezier(0,0,0.2,1) infinite'}} />
                   <span className="relative rounded-full h-2 w-2 bg-violet-500" />
                 </span>
-                <span className="text-[10.5px] sm:text-[11px] font-medium text-violet-300/80">No sales calls — buy & launch instantly</span>
+                <span className="text-[15px] sm:text-[15px] font-medium text-violet-300/80">No sales calls — buy & launch instantly</span>
               </div>
 
               {/* OVERSIZED HEADLINE — key Dribbble technique */}
@@ -41,16 +41,16 @@ export function HomePage() {
                 <span className="grad-text">ready to buy.</span>
               </h1>
 
-              <p className="text-[13px] sm:text-[15.5px] text-white/30 leading-relaxed mb-6 sm:mb-8 max-w-[420px]">
+              <p className="text-[15px] sm:text-[15.5px] text-white/50 leading-relaxed mb-6 sm:mb-8 max-w-[420px]">
                 Websites, branding, SEO & social — with transparent pricing. Pick a package, pay, and we start building immediately.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mb-6 sm:mb-10">
-                <button onClick={()=>navigate("services")} className="group relative px-7 py-3.5 text-[12.5px] font-semibold text-white rounded-full overflow-hidden shadow-xl shadow-violet-600/20 text-center">
+                <button onClick={()=>navigate("services")} className="group relative px-7 py-3.5 text-[14px] font-semibold text-white rounded-full overflow-hidden shadow-xl shadow-violet-600/20 text-center">
                   <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 group-hover:from-violet-500 group-hover:to-fuchsia-500 transition-all duration-300" />
                   <span className="relative flex items-center justify-center gap-2">Browse Services <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></span>
                 </button>
-                <button onClick={()=>navigate("services")} className="px-7 py-3.5 text-[12.5px] font-medium text-white/35 rounded-full border border-white/[0.06] hover:border-white/[0.12] hover:text-white/50 transition-all text-center">
+                <button onClick={()=>navigate("services")} className="px-7 py-3.5 text-[14px] font-medium text-white/55 rounded-full border border-white/[0.06] hover:border-white/[0.12] hover:text-white/50 transition-all text-center">
                   View Pricing
                 </button>
               </div>
@@ -65,11 +65,11 @@ export function HomePage() {
                 </div>
                 {/* Floating stat cards */}
                 <div className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-6 neu rounded-xl p-3 sm:p-4 float" style={{animationDelay:'0s'}}>
-                  <p className="text-[9px] sm:text-[10px] text-white/30 mb-0.5">Projects Delivered</p>
+                  <p className="text-[11px] sm:text-[14px] text-white/50 mb-0.5">Projects Delivered</p>
                   <p className="display text-[18px] sm:text-[24px] font-extrabold text-violet-400">500+</p>
                 </div>
                 <div className="absolute -top-3 -right-2 sm:-top-4 sm:-right-4 neu rounded-xl p-3 sm:p-4 float" style={{animationDelay:'1.5s'}}>
-                  <p className="text-[9px] sm:text-[10px] text-white/30 mb-0.5">Client Rating</p>
+                  <p className="text-[11px] sm:text-[14px] text-white/50 mb-0.5">Client Rating</p>
                   <p className="display text-[18px] sm:text-[24px] font-extrabold text-amber-400">4.9★</p>
                 </div>
               </div>
@@ -85,10 +85,10 @@ export function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 sm:mb-12">
             <div className="anim">
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-violet-400/60 mb-2 block">Services</span>
+              <span className="text-[14px] font-bold uppercase tracking-[0.3em] text-violet-400/60 mb-2 block">Services</span>
               <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight leading-tight">What we <span className="grad-text">build</span></h2>
             </div>
-            <button onClick={()=>navigate("services")} className="text-[12px] font-medium text-white/25 hover:text-white/50 transition-colors mt-3 sm:mt-0 flex items-center gap-1.5">
+            <button onClick={()=>navigate("services")} className="text-[14px] font-medium text-white/45 hover:text-white/50 transition-colors mt-3 sm:mt-0 flex items-center gap-1.5">
               All services <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </button>
           </div>
@@ -114,17 +114,17 @@ export function HomePage() {
 
                   <div className="p-5 sm:p-6">
                     <h3 className="display text-[16px] sm:text-[18px] font-bold text-white mb-1.5 group-hover:text-violet-200 transition-colors">{cat.name}</h3>
-                    <p className="text-[11.5px] sm:text-[12.5px] text-white/25 leading-relaxed mb-4">{cat.description}</p>
+                    <p className="text-[14px] sm:text-[14px] text-white/45 leading-relaxed mb-4">{cat.description}</p>
 
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {svcList.map(s=>(
-                        <span key={s.slug} className="text-[9.5px] px-2.5 py-1 rounded-full bg-white/[0.04] text-white/25 border border-white/[0.03]">{s.short_name}</span>
+                        <span key={s.slug} className="text-[12px] px-2.5 py-1 rounded-full bg-white/[0.04] text-white/45 border border-white/[0.03]">{s.short_name}</span>
                       ))}
                     </div>
 
                     <div className="flex items-center justify-between">
-                      <span className="text-[10.5px] text-white/15">From ${Math.min(...svcList.flatMap(s=>s.packages.map(p=>p.price)))}</span>
-                      <span className="text-[10.5px] font-semibold flex items-center gap-1 group-hover:gap-2 transition-all" style={{color:m.color}}>
+                      <span className="text-[15px] text-white/30">From ${Math.min(...svcList.flatMap(s=>s.packages.map(p=>p.price)))}</span>
+                      <span className="text-[15px] font-semibold flex items-center gap-1 group-hover:gap-2 transition-all" style={{color:m.color}}>
                         Explore <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                       </span>
                     </div>
@@ -142,11 +142,11 @@ export function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 sm:mb-12">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-fuchsia-400/60 mb-2 block">Our Work</span>
+              <span className="text-[14px] font-bold uppercase tracking-[0.3em] text-fuchsia-400/60 mb-2 block">Our Work</span>
               <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight leading-tight">Recent <span className="grad-text">projects</span></h2>
-              <p className="text-white/20 text-[12.5px] mt-2 max-w-sm">Real results from real clients — here's what we've delivered recently.</p>
+              <p className="text-white/40 text-[14px] mt-2 max-w-sm">Real results from real clients — here's what we've delivered recently.</p>
             </div>
-            <button onClick={()=>navigate("services")} className="text-[12px] font-medium text-white/20 hover:text-white/50 transition-colors mt-3 sm:mt-0 flex items-center gap-1.5">
+            <button onClick={()=>navigate("services")} className="text-[14px] font-medium text-white/40 hover:text-white/50 transition-colors mt-3 sm:mt-0 flex items-center gap-1.5">
               View all <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </button>
           </div>
@@ -181,7 +181,7 @@ export function HomePage() {
               <div key={s.label} className="neu rounded-xl p-4 sm:p-5 text-center">
                 <span className="text-[20px] sm:text-[24px] block mb-2">{s.icon}</span>
                 <p className="display text-[20px] sm:text-[24px] font-extrabold" style={{color:s.color}}>{s.val}</p>
-                <p className="text-[10px] sm:text-[11px] text-white/20 mt-1">{s.label}</p>
+                <p className="text-[14px] sm:text-[15px] text-white/40 mt-1">{s.label}</p>
               </div>
             ))}
           </div>
@@ -193,7 +193,7 @@ export function HomePage() {
         <div className="mesh w-[500px] h-[300px] top-0 left-1/2 -translate-x-1/2 bg-violet-600/[0.04]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
           <div className="text-center mb-8 sm:mb-12">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-amber-400/60 mb-2 block">Process</span>
+            <span className="text-[14px] font-bold uppercase tracking-[0.3em] text-amber-400/60 mb-2 block">Process</span>
             <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">5 steps to <span className="grad-text">launch</span></h2>
           </div>
 
@@ -209,9 +209,9 @@ export function HomePage() {
                 <div className="w-10 h-10 sm:w-11 sm:h-11 mx-auto mb-2.5 sm:mb-3 rounded-xl flex items-center justify-center" style={{background:`${s.c}12`}}>
                   <svg className="w-4 h-4 sm:w-5 sm:h-5" style={{color:s.c}} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d={s.i}/></svg>
                 </div>
-                <span className="text-[9px] sm:text-[10px] font-bold block mb-0.5" style={{color:s.c}}>{s.n}</span>
-                <h3 className="text-[12px] sm:text-[13px] font-bold text-white/75 mb-0.5">{s.t}</h3>
-                <p className="text-[9px] sm:text-[10px] text-white/20">{s.d}</p>
+                <span className="text-[11px] sm:text-[14px] font-bold block mb-0.5" style={{color:s.c}}>{s.n}</span>
+                <h3 className="text-[14px] sm:text-[15px] font-bold text-white/75 mb-0.5">{s.t}</h3>
+                <p className="text-[11px] sm:text-[14px] text-white/40">{s.d}</p>
               </div>
             ))}
           </div>
@@ -223,9 +223,9 @@ export function HomePage() {
         <div className="mesh w-[500px] h-[500px] -top-20 -right-32 bg-violet-600/[0.05]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
           <div className="text-center mb-8 sm:mb-12">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-violet-400/60 mb-2 block">Pricing</span>
+            <span className="text-[14px] font-bold uppercase tracking-[0.3em] text-violet-400/60 mb-2 block">Pricing</span>
             <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">Website <span className="grad-text">Development</span></h2>
-            <p className="text-white/20 text-[12.5px] sm:text-[13px] mt-2">Our most popular service — pick a tier</p>
+            <p className="text-white/40 text-[14px] sm:text-[15px] mt-2">Our most popular service — pick a tier</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 max-w-[1020px] mx-auto mb-10 sm:mb-16">
@@ -233,7 +233,7 @@ export function HomePage() {
           </div>
 
           <div className="divider mb-8 sm:mb-10" />
-          <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-white/10 mb-6 sm:mb-8">More Services</p>
+          <p className="text-center text-[14px] font-bold uppercase tracking-[0.3em] text-white/10 mb-6 sm:mb-8">More Services</p>
 
           {/* Mini service cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-[1020px] mx-auto">
@@ -244,11 +244,11 @@ export function HomePage() {
                   <div className="absolute top-0 left-0 w-full h-[2px]" style={{background:`linear-gradient(90deg, ${m.color}, transparent)`}} />
                   <div className="flex items-center justify-between mb-2.5">
                     <span className="text-[20px] sm:text-[22px]">{s.icon}</span>
-                    <span className="text-[10px] text-white/15 bg-white/[0.03] px-2 py-0.5 rounded-full border border-white/[0.03]">From ${s.packages[0].price}</span>
+                    <span className="text-[14px] text-white/30 bg-white/[0.03] px-2 py-0.5 rounded-full border border-white/[0.03]">From ${s.packages[0].price}</span>
                   </div>
-                  <h3 className="text-[13px] sm:text-[14px] font-bold text-white/75 mb-1 group-hover:text-violet-300 transition-colors display">{s.name}</h3>
-                  <p className="text-[10.5px] sm:text-[11px] text-white/18 line-clamp-2 mb-3">{s.outcome_statement}</p>
-                  <span className="text-[10px] font-semibold flex items-center gap-1 group-hover:gap-1.5 transition-all" style={{color:m.color}}>View packages <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg></span>
+                  <h3 className="text-[15px] sm:text-[14px] font-bold text-white/75 mb-1 group-hover:text-violet-300 transition-colors display">{s.name}</h3>
+                  <p className="text-[15px] sm:text-[15px] text-white/35 line-clamp-2 mb-3">{s.outcome_statement}</p>
+                  <span className="text-[14px] font-semibold flex items-center gap-1 group-hover:gap-1.5 transition-all" style={{color:m.color}}>View packages <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg></span>
                 </button>
               );
             })}
@@ -261,21 +261,21 @@ export function HomePage() {
         <div className="mesh w-[400px] h-[400px] top-20 -right-32 bg-amber-500/[0.04]" />
         <div className="max-w-[960px] mx-auto px-4 sm:px-8 relative">
           <div className="text-center mb-8 sm:mb-12">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400/60 mb-2 block">Bundles</span>
+            <span className="text-[14px] font-bold uppercase tracking-[0.3em] text-emerald-400/60 mb-2 block">Bundles</span>
             <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">Save with <span className="grad-text">bundles</span></h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {bundles.map(b=>(
               <div key={b.id} className="neu rounded-2xl p-5 sm:p-7 relative overflow-hidden">
-                <div className="absolute -top-2.5 right-4 sm:right-6 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 text-[9px] font-bold uppercase tracking-wider text-white shadow-lg shadow-emerald-500/25">Save {b.discount}%</div>
+                <div className="absolute -top-2.5 right-4 sm:right-6 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 text-[11px] font-bold uppercase tracking-wider text-white shadow-lg shadow-emerald-500/25">Save {b.discount}%</div>
                 <h3 className="display text-[17px] sm:text-[19px] font-bold text-white/90 mb-1">{b.name}</h3>
-                <p className="text-[11px] text-white/20 mb-4">{b.tagline}</p>
+                <p className="text-[15px] text-white/40 mb-4">{b.tagline}</p>
                 <div className="flex items-baseline gap-2 mb-4">
                   <span className="display text-[26px] sm:text-[32px] font-extrabold text-white">${b.price.toLocaleString()}</span>
-                  <span className="text-[12px] text-white/15 line-through">${b.original_price.toLocaleString()}</span>
+                  <span className="text-[14px] text-white/30 line-through">${b.original_price.toLocaleString()}</span>
                 </div>
-                <ul className="space-y-2 mb-5">{b.services.map(slug=>{const sv=services.find(x=>x.slug===slug);return sv?<li key={slug} className="flex items-center gap-2 text-[11.5px] text-white/30"><span className="text-[14px]">{sv.icon}</span>{sv.name}</li>:null;})}</ul>
-                <button className="w-full py-2.5 text-[12px] font-semibold text-white/60 rounded-xl hover:text-white transition-all" style={{background:'rgba(255,255,255,0.03)',border:'1px solid rgba(255,255,255,0.05)'}}>Get Bundle — ${b.price.toLocaleString()}</button>
+                <ul className="space-y-2 mb-5">{b.services.map(slug=>{const sv=services.find(x=>x.slug===slug);return sv?<li key={slug} className="flex items-center gap-2 text-[14px] text-white/50"><span className="text-[14px]">{sv.icon}</span>{sv.name}</li>:null;})}</ul>
+                <button className="w-full py-2.5 text-[14px] font-semibold text-white/60 rounded-xl hover:text-white transition-all" style={{background:'rgba(255,255,255,0.03)',border:'1px solid rgba(255,255,255,0.05)'}}>Get Bundle — ${b.price.toLocaleString()}</button>
               </div>
             ))}
           </div>
@@ -287,7 +287,7 @@ export function HomePage() {
         <div className="mesh w-[500px] h-[300px] bottom-0 -left-32 bg-violet-600/[0.04]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
           <div className="text-center mb-8 sm:mb-12">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-violet-400/60 mb-2 block">Testimonials</span>
+            <span className="text-[14px] font-bold uppercase tracking-[0.3em] text-violet-400/60 mb-2 block">Testimonials</span>
             <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">Trusted by <span className="grad-text">500+</span> businesses</h2>
           </div>
 
@@ -300,10 +300,10 @@ export function HomePage() {
               <div key={i} className="neu rounded-2xl p-5 sm:p-6 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-[2px]" style={{background:`linear-gradient(90deg, ${t.c}, transparent)`}} />
                 <div className="flex gap-0.5 mb-3 sm:mb-4">{Array.from({length:5}).map((_,j)=><svg key={j} className="w-3 h-3" style={{color:t.c}} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>)}</div>
-                <p className="text-[12px] text-white/30 leading-relaxed mb-4 italic">"{t.q}"</p>
+                <p className="text-[14px] text-white/50 leading-relaxed mb-4 italic">"{t.q}"</p>
                 <div className="flex items-center gap-2.5">
                   <img src={t.img} alt={t.n} className="w-8 h-8 rounded-full object-cover border-2" style={{borderColor:`${t.c}30`}} />
-                  <div><p className="text-[11.5px] font-semibold text-white/65">{t.n}</p><p className="text-[10px] text-white/18">{t.r}</p></div>
+                  <div><p className="text-[14px] font-semibold text-white/65">{t.n}</p><p className="text-[14px] text-white/35">{t.r}</p></div>
                 </div>
               </div>
             ))}
@@ -313,7 +313,7 @@ export function HomePage() {
             {[{v:"500+",l:"Projects",c:"#7C3AED"},{v:"4.9/5",l:"Satisfaction",c:"#EC4899"},{v:"7 days",l:"Avg Delivery",c:"#F59E0B"},{v:"98%",l:"On-Time",c:"#10B981"}].map(s=>(
               <div key={s.l} className="text-center">
                 <p className="display text-[1.5rem] sm:text-[2rem] font-extrabold" style={{color:s.c}}>{s.v}</p>
-                <p className="text-[9.5px] sm:text-[10px] text-white/18 mt-0.5">{s.l}</p>
+                <p className="text-[12px] sm:text-[14px] text-white/35 mt-0.5">{s.l}</p>
               </div>
             ))}
           </div>
@@ -333,8 +333,8 @@ export function HomePage() {
           <h2 className="display text-[1.8rem] sm:text-[2.6rem] lg:text-[3.4rem] font-extrabold tracking-tight mb-4 sm:mb-6">
             Ready to<br /><span className="grad-text">get started?</span>
           </h2>
-          <p className="text-white/20 text-[13px] sm:text-[14px] mb-8 sm:mb-10 max-w-md mx-auto leading-relaxed">Pick a package and we'll start building within 24 hours of purchase.</p>
-          <button onClick={()=>navigate("services")} className="group relative px-8 sm:px-10 py-3.5 sm:py-4 text-[12.5px] font-semibold text-white rounded-full overflow-hidden shadow-xl shadow-violet-600/20">
+          <p className="text-white/40 text-[15px] sm:text-[14px] mb-8 sm:mb-10 max-w-md mx-auto leading-relaxed">Pick a package and we'll start building within 24 hours of purchase.</p>
+          <button onClick={()=>navigate("services")} className="group relative px-8 sm:px-10 py-3.5 sm:py-4 text-[14px] font-semibold text-white rounded-full overflow-hidden shadow-xl shadow-violet-600/20">
             <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 group-hover:from-violet-500 group-hover:to-fuchsia-500 transition-all duration-300" />
             <span className="relative flex items-center justify-center gap-2">Browse All Services <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></span>
           </button>

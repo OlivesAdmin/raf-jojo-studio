@@ -21,10 +21,10 @@ export function ProjectCard({
         <img src={imgSrc} alt={imgAlt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050510] via-[#050510]/20 to-transparent" />
         <div className="absolute inset-0 bg-[#050510]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-          <span className="px-5 py-2.5 rounded-full bg-white/10 text-[11px] font-semibold text-white border border-white/10">View Project →</span>
+          <span className="px-5 py-2.5 rounded-full bg-white/10 text-[13px] font-semibold text-white border border-white/10">View Project →</span>
         </div>
         <div className="absolute top-3 left-3">
-          <span className="px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider text-white/90" style={{ background:`${color}40`, backdropFilter:'blur(8px)', border:`1px solid ${color}25` }}>
+          <span className="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider text-white/90" style={{ background:`${color}40`, backdropFilter:'blur(8px)', border:`1px solid ${color}25` }}>
             {category}
           </span>
         </div>
