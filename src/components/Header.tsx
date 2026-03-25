@@ -6,7 +6,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50" style={{ background:'rgba(5,5,16,0.75)', backdropFilter:'blur(24px)', WebkitBackdropFilter:'blur(24px)', borderBottom:'1px solid rgba(255,255,255,0.03)' }}>
+    <header className="sticky top-[36px] sm:top-[38px] z-50" style={{ background:'rgba(5,5,16,0.75)', backdropFilter:'blur(24px)', WebkitBackdropFilter:'blur(24px)', borderBottom:'1px solid rgba(255,255,255,0.03)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between h-[60px] sm:h-[68px]">
         <button onClick={() => navigate("home")} className="flex items-center gap-2.5 group">
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden relative">

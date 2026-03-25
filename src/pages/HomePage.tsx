@@ -25,6 +25,15 @@ export function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 lg:py-0 w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center">
             <div className="anim">
+              {/* 🔥 LAUNCH PROMO BANNER */}
+              <div className="mb-5 px-4 py-3 rounded-xl bg-gradient-to-r from-amber-500/15 to-orange-500/10 border border-amber-500/20 flex items-start sm:items-center gap-3">
+                <span className="text-[22px] flex-shrink-0">🔥</span>
+                <div>
+                  <p className="text-[15px] sm:text-[16px] font-bold text-amber-300">Launch Offer — 50% OFF for first 10 customers!</p>
+                  <p className="text-[13px] sm:text-[14px] text-amber-200/50 mt-0.5">Limited spots. Use code <span className="font-bold text-amber-300">LAUNCH50</span> at checkout.</p>
+                </div>
+              </div>
+
               {/* Badge */}
               <div className="badge mb-4 sm:mb-6">
                 <span className="relative flex h-2 w-2">
@@ -286,6 +295,102 @@ export function HomePage() {
                 <button className="w-full py-3.5 text-[15px] font-bold text-white rounded-xl transition-all bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 shadow-lg shadow-emerald-600/20">Get Bundle — ${b.price.toLocaleString()}</button>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ======= MONTHLY MAINTENANCE PLANS ======= */}
+      <section className="py-10 sm:py-24 relative">
+        <div className="mesh w-[400px] h-[400px] top-0 left-0 bg-violet-600/[0.03]" />
+        <div className="max-w-[960px] mx-auto px-4 sm:px-8 relative">
+          <div className="text-center mb-8 sm:mb-12">
+            <span className="text-[14px] font-bold uppercase tracking-[0.3em] text-teal-400/60 mb-2 block">Ongoing Support</span>
+            <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">Monthly <span className="grad-text">care plans</span></h2>
+            <p className="text-white/40 text-[15px] mt-2 max-w-md mx-auto">Keep your website fast, secure, and up-to-date with our maintenance packages.</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+            {[
+              { name: "Essential", price: 99, features: ["Hosting & SSL", "Weekly backups", "Security monitoring", "Uptime monitoring", "Monthly report"], color: "#14B8A6" },
+              { name: "Growth", price: 199, features: ["Everything in Essential", "Monthly content updates (2 pages)", "SEO health check", "Performance optimization", "Priority email support"], color: "#7C3AED", popular: true },
+              { name: "Premium", price: 399, features: ["Everything in Growth", "Unlimited content updates", "Monthly analytics review", "A/B testing", "Dedicated account manager", "Priority phone support"], color: "#F59E0B" },
+            ].map((plan) => (
+              <div key={plan.name} className={`neu rounded-2xl p-5 sm:p-6 relative ${plan.popular ? 'ring-1 ring-violet-500/30' : ''}`}>
+                {plan.popular && <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 text-[12px] font-bold text-white shadow-lg shadow-violet-500/30">Recommended</div>}
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-2.5 h-2.5 rounded-full" style={{background: plan.color}} />
+                  <span className="text-[14px] font-bold uppercase tracking-wider" style={{color: plan.color}}>{plan.name}</span>
+                </div>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="display text-[32px] font-extrabold text-white">${plan.price}</span>
+                  <span className="text-[14px] text-white/30">/month</span>
+                </div>
+                <ul className="space-y-2.5 mb-6">
+                  {plan.features.map((f, i) => (
+                    <li key={i} className="flex items-start gap-2 text-[14px] text-white/50">
+                      <svg className="w-4 h-4 mt-0.5 flex-shrink-0" style={{color: plan.color}} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <button className="w-full py-3 text-[14px] font-semibold text-white/60 hover:text-white rounded-xl transition-all" style={{background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.06)'}}>
+                  Get {plan.name} Plan
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ======= CONTACT / ASK QUESTIONS ======= */}
+      <section className="py-10 sm:py-24 relative">
+        <div className="max-w-[700px] mx-auto px-4 sm:px-8">
+          <div className="neu rounded-2xl p-6 sm:p-10 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-violet-600 via-fuchsia-500 to-amber-400" />
+            <div className="text-center mb-8">
+              <span className="text-[40px] block mb-3">💬</span>
+              <h2 className="display text-[1.4rem] sm:text-[1.8rem] font-extrabold text-white mb-2">Have questions?</h2>
+              <p className="text-[15px] text-white/45">Not sure which package is right? Send us a message and we'll help you choose.</p>
+            </div>
+
+            <div className="space-y-4 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input type="text" placeholder="Your name" className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.06] rounded-xl text-[15px] text-white/80 placeholder-white/25 focus:outline-none focus:border-violet-500/30" />
+                <input type="email" placeholder="Email address" className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.06] rounded-xl text-[15px] text-white/80 placeholder-white/25 focus:outline-none focus:border-violet-500/30" />
+              </div>
+              <select className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.06] rounded-xl text-[15px] text-white/50 focus:outline-none focus:border-violet-500/30 bg-[#0d1025]">
+                <option value="">What service are you interested in?</option>
+                <option value="web">Website Development</option>
+                <option value="redesign">Website Redesign</option>
+                <option value="logo">Logo Design</option>
+                <option value="graphic">Graphic Design</option>
+                <option value="seo">SEO / Search Boost</option>
+                <option value="social">Social Media Management</option>
+                <option value="maintenance">Monthly Maintenance</option>
+                <option value="bundle">Bundle Package</option>
+                <option value="other">Other / Not Sure</option>
+              </select>
+              <textarea rows={4} placeholder="Your question or project details..." className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.06] rounded-xl text-[15px] text-white/80 placeholder-white/25 focus:outline-none focus:border-violet-500/30 resize-none" />
+              <button className="w-full py-3.5 text-[15px] font-bold text-white rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 transition-all shadow-lg shadow-violet-600/20">
+                Send Message
+              </button>
+            </div>
+
+            {/* Alternative contact methods */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-6" style={{borderTop:'1px solid rgba(255,255,255,0.04)'}}>
+              <a href="https://wa.me/6581234567" target="_blank" rel="noopener" className="flex items-center gap-3 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/15 hover:bg-emerald-500/15 transition-colors">
+                <span className="text-[22px]">💬</span>
+                <div><p className="text-[14px] font-bold text-emerald-400">WhatsApp</p><p className="text-[12px] text-white/30">Chat with us</p></div>
+              </a>
+              <a href="mailto:hello@rafandjojo.studio" className="flex items-center gap-3 p-3 rounded-xl bg-violet-500/10 border border-violet-500/15 hover:bg-violet-500/15 transition-colors">
+                <span className="text-[22px]">📧</span>
+                <div><p className="text-[14px] font-bold text-violet-400">Email</p><p className="text-[12px] text-white/30">hello@rafandjojo.studio</p></div>
+              </a>
+              <a href="https://calendly.com" target="_blank" rel="noopener" className="flex items-center gap-3 p-3 rounded-xl bg-amber-500/10 border border-amber-500/15 hover:bg-amber-500/15 transition-colors">
+                <span className="text-[22px]">📅</span>
+                <div><p className="text-[14px] font-bold text-amber-400">Book a Call</p><p className="text-[12px] text-white/30">Free 15-min consult</p></div>
+              </a>
+            </div>
           </div>
         </div>
       </section>
