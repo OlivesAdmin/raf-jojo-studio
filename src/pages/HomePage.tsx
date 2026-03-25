@@ -36,22 +36,22 @@ export function HomePage() {
                 Websites, branding, SEO & social media — with transparent pricing. Pick a package, pay, and we start building immediately.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 mb-5 sm:mb-8">
-                <button onClick={()=>navigate("services")} className="group relative px-7 py-3.5 text-[14px] font-semibold text-white rounded-full overflow-hidden shadow-xl shadow-violet-600/20 text-center">
+              <div className="flex flex-col sm:flex-row gap-2.5 mb-4 sm:mb-6">
+                <button onClick={()=>navigate("services")} className="group relative px-7 py-3.5 text-[15px] font-semibold text-white rounded-full overflow-hidden shadow-xl shadow-violet-600/20 text-center">
                   <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 group-hover:from-violet-500 group-hover:to-fuchsia-500 transition-all duration-300" />
                   <span className="relative flex items-center justify-center gap-2">Browse Services <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></span>
                 </button>
-                <button onClick={()=>navigate("services")} className="px-7 py-3.5 text-[14px] font-medium text-white/55 rounded-full border border-white/[0.06] hover:border-white/[0.12] hover:text-white/50 transition-all text-center">
+                <button onClick={()=>navigate("services")} className="px-7 py-3.5 text-[15px] font-semibold text-white/80 rounded-full bg-white/[0.06] hover:bg-white/[0.1] transition-all text-center">
                   View Pricing
                 </button>
               </div>
             </div>
 
-            {/* Hero visual — visible on all screens */}
-            <div className="anim d2 relative mt-4 lg:mt-0">
+            {/* Hero visual — shows actual work, not abstract art */}
+            <div className="anim d2 relative">
               <div className="relative">
                 <div className="rounded-2xl overflow-hidden neu shadow-2xl shadow-violet-900/20">
-                  <img src={IMG.hero1} alt="Digital design workspace" className="w-full aspect-[16/9] lg:aspect-[4/3] object-cover" loading="eager" />
+                  <img src={IMG.web1} alt="Website design on laptop" className="w-full aspect-[16/10] lg:aspect-[4/3] object-cover" loading="eager" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050510] via-transparent to-[#050510]/30 rounded-2xl" />
                 </div>
                 {/* Floating stat cards */}
@@ -68,11 +68,11 @@ export function HomePage() {
           </div>
         </div>
 
-        <div className="absolute bottom-0 inset-x-0 h-16 sm:h-24" style={{background:'linear-gradient(180deg, transparent, #050510)'}} />
+        <div className="absolute bottom-0 inset-x-0 h-8 sm:h-16" style={{background:'linear-gradient(180deg, transparent, #050510)'}} />
       </section>
 
       {/* ======= BENTO SERVICE CATEGORIES ======= */}
-      <section className="py-10 sm:py-24 relative">
+      <section className="py-8 sm:py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 sm:mb-12">
             <div className="anim">
