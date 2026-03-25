@@ -17,17 +17,16 @@ export function HomePage() {
   return (
     <div className="overflow-x-hidden">
       {/* ======= HERO ======= */}
-      <section className="relative overflow-hidden min-h-[85vh] sm:min-h-[90vh] flex items-center">
+      <section className="relative overflow-hidden lg:min-h-[90vh] lg:flex lg:items-center">
         {/* Mesh blobs */}
-        <div className="mesh w-[400px] h-[400px] sm:w-[700px] sm:h-[700px] -top-48 -left-48 bg-violet-600/[0.07]" />
-        <div className="mesh w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] top-1/3 -right-32 bg-fuchsia-500/[0.05]" />
-        <div className="mesh w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] bottom-0 left-1/3 bg-amber-500/[0.03]" />
+        <div className="mesh w-[300px] h-[300px] sm:w-[700px] sm:h-[700px] -top-48 -left-48 bg-violet-600/[0.07]" />
+        <div className="mesh w-[200px] h-[200px] sm:w-[500px] sm:h-[500px] top-1/3 -right-32 bg-fuchsia-500/[0.05]" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-0 w-full relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 lg:py-0 w-full relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center">
             <div className="anim">
               {/* Badge */}
-              <div className="badge mb-6 sm:mb-8">
+              <div className="badge mb-4 sm:mb-6">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inset-0 rounded-full bg-violet-400" style={{animation:'pulse-dot 2s cubic-bezier(0,0,0.2,1) infinite'}} />
                   <span className="relative rounded-full h-2 w-2 bg-violet-500" />
@@ -36,17 +35,17 @@ export function HomePage() {
               </div>
 
               {/* OVERSIZED HEADLINE — key Dribbble technique */}
-              <h1 className="display text-[2.4rem] sm:text-[3.2rem] lg:text-[4rem] xl:text-[4.6rem] font-extrabold leading-[0.95] tracking-tight mb-5 sm:mb-7">
-                <span className="text-white">Digital</span><br />
-                <span className="text-white">services,</span><br />
+              <h1 className="display text-[2rem] sm:text-[3.2rem] lg:text-[4rem] xl:text-[4.6rem] font-extrabold leading-[0.95] tracking-tight mb-4 sm:mb-5">
+                <span className="text-white">Digital</span><br className="hidden sm:block" />
+                <span className="text-white"> services,</span><br />
                 <span className="grad-text">ready to buy.</span>
               </h1>
 
-              <p className="text-[14px] sm:text-[15.5px] text-white/30 leading-relaxed mb-8 sm:mb-10 max-w-[420px]">
+              <p className="text-[13px] sm:text-[15.5px] text-white/30 leading-relaxed mb-6 sm:mb-8 max-w-[420px]">
                 Websites, branding, SEO & social — with transparent pricing. Pick a package, pay, and we start building immediately.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 mb-10 sm:mb-14">
+              <div className="flex flex-col sm:flex-row gap-3 mb-6 sm:mb-10">
                 <button onClick={()=>navigate("services")} className="group relative px-7 py-3.5 text-[12.5px] font-semibold text-white rounded-full overflow-hidden shadow-xl shadow-violet-600/20 text-center">
                   <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 group-hover:from-violet-500 group-hover:to-fuchsia-500 transition-all duration-300" />
                   <span className="relative flex items-center justify-center gap-2">Browse Services <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></span>
@@ -55,52 +54,36 @@ export function HomePage() {
                   View Pricing
                 </button>
               </div>
-
-              {/* Stats row — Dribbble style inline metrics */}
-              <div className="flex gap-6 sm:gap-10">
-                {[{v:"500+",l:"Projects"},{v:"4.9★",l:"Rating"},{v:"7d",l:"Avg Delivery"}].map(s=>(
-                  <div key={s.l}>
-                    <p className="text-[18px] sm:text-[22px] font-bold text-white display">{s.v}</p>
-                    <p className="text-[10px] sm:text-[11px] text-white/20 mt-0.5">{s.l}</p>
-                  </div>
-                ))}
-              </div>
             </div>
 
-            {/* Hero visual — real image with overlay */}
-            <div className="hidden lg:block anim d3 relative">
+            {/* Hero visual — visible on all screens */}
+            <div className="anim d2 relative mt-4 lg:mt-0">
               <div className="relative">
-                {/* Main hero image */}
                 <div className="rounded-2xl overflow-hidden neu shadow-2xl shadow-violet-900/20">
-                  <img src={IMG.hero1} alt="Digital design workspace" className="w-full aspect-[4/3] object-cover" loading="eager" />
+                  <img src={IMG.hero1} alt="Digital design workspace" className="w-full aspect-[16/9] lg:aspect-[4/3] object-cover" loading="eager" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050510] via-transparent to-[#050510]/30 rounded-2xl" />
                 </div>
-                {/* Floating stat cards on top of hero image */}
-                <div className="absolute -bottom-6 -left-6 neu rounded-xl p-4 float" style={{animationDelay:'0s'}}>
-                  <p className="text-[10px] text-white/30 mb-1">Projects Delivered</p>
-                  <p className="display text-[24px] font-extrabold text-violet-400">500+</p>
+                {/* Floating stat cards */}
+                <div className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-6 neu rounded-xl p-3 sm:p-4 float" style={{animationDelay:'0s'}}>
+                  <p className="text-[9px] sm:text-[10px] text-white/30 mb-0.5">Projects Delivered</p>
+                  <p className="display text-[18px] sm:text-[24px] font-extrabold text-violet-400">500+</p>
                 </div>
-                <div className="absolute -top-4 -right-4 neu rounded-xl p-4 float" style={{animationDelay:'1.5s'}}>
-                  <p className="text-[10px] text-white/30 mb-1">Client Satisfaction</p>
-                  <p className="display text-[24px] font-extrabold text-amber-400">4.9★</p>
-                </div>
-                <div className="absolute top-1/2 -right-8 neu rounded-xl p-3 float" style={{animationDelay:'3s'}}>
-                  <p className="text-[10px] text-white/30 mb-1">Avg Delivery</p>
-                  <p className="display text-[20px] font-extrabold text-emerald-400">7 days</p>
+                <div className="absolute -top-3 -right-2 sm:-top-4 sm:-right-4 neu rounded-xl p-3 sm:p-4 float" style={{animationDelay:'1.5s'}}>
+                  <p className="text-[9px] sm:text-[10px] text-white/30 mb-0.5">Client Rating</p>
+                  <p className="display text-[18px] sm:text-[24px] font-extrabold text-amber-400">4.9★</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 inset-x-0 h-40" style={{background:'linear-gradient(180deg, transparent, #050510)'}} />
+        <div className="absolute bottom-0 inset-x-0 h-16 sm:h-24" style={{background:'linear-gradient(180deg, transparent, #050510)'}} />
       </section>
 
       {/* ======= BENTO SERVICE CATEGORIES ======= */}
-      <section className="py-16 sm:py-28 relative">
+      <section className="py-10 sm:py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-10 sm:mb-14">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 sm:mb-12">
             <div className="anim">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-violet-400/60 mb-2 block">Services</span>
               <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight leading-tight">What we <span className="grad-text">build</span></h2>
@@ -154,10 +137,10 @@ export function HomePage() {
       </section>
 
       {/* ======= PORTFOLIO SHOWCASE ======= */}
-      <section className="py-16 sm:py-28 relative">
+      <section className="py-10 sm:py-24 relative">
         <div className="mesh w-[400px] h-[400px] -top-20 right-0 bg-fuchsia-500/[0.03]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-10 sm:mb-14">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 sm:mb-12">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-fuchsia-400/60 mb-2 block">Our Work</span>
               <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight leading-tight">Recent <span className="grad-text">projects</span></h2>
@@ -206,10 +189,10 @@ export function HomePage() {
       </section>
 
       {/* ======= HOW IT WORKS ======= */}
-      <section className="py-16 sm:py-28 relative">
+      <section className="py-10 sm:py-24 relative">
         <div className="mesh w-[500px] h-[300px] top-0 left-1/2 -translate-x-1/2 bg-violet-600/[0.04]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-8 sm:mb-12">
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-amber-400/60 mb-2 block">Process</span>
             <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">5 steps to <span className="grad-text">launch</span></h2>
           </div>
@@ -236,16 +219,16 @@ export function HomePage() {
       </section>
 
       {/* ======= FEATURED PRICING ======= */}
-      <section className="py-16 sm:py-28 relative">
+      <section className="py-10 sm:py-24 relative">
         <div className="mesh w-[500px] h-[500px] -top-20 -right-32 bg-violet-600/[0.05]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-8 sm:mb-12">
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-violet-400/60 mb-2 block">Pricing</span>
             <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">Website <span className="grad-text">Development</span></h2>
             <p className="text-white/20 text-[12.5px] sm:text-[13px] mt-2">Our most popular service — pick a tier</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 max-w-[1020px] mx-auto mb-16 sm:mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 max-w-[1020px] mx-auto mb-10 sm:mb-16">
             {services[0].packages.map(p=><PricingCard key={p.name} pkg={p} onSelect={t=>buy(services[0],t)} />)}
           </div>
 
@@ -274,10 +257,10 @@ export function HomePage() {
       </section>
 
       {/* ======= BUNDLES ======= */}
-      <section className="py-16 sm:py-28 relative">
+      <section className="py-10 sm:py-24 relative">
         <div className="mesh w-[400px] h-[400px] top-20 -right-32 bg-amber-500/[0.04]" />
         <div className="max-w-[960px] mx-auto px-4 sm:px-8 relative">
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-8 sm:mb-12">
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400/60 mb-2 block">Bundles</span>
             <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">Save with <span className="grad-text">bundles</span></h2>
           </div>
@@ -300,10 +283,10 @@ export function HomePage() {
       </section>
 
       {/* ======= TESTIMONIALS ======= */}
-      <section className="py-16 sm:py-28 relative">
+      <section className="py-10 sm:py-24 relative">
         <div className="mesh w-[500px] h-[300px] bottom-0 -left-32 bg-violet-600/[0.04]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative">
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-8 sm:mb-12">
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-violet-400/60 mb-2 block">Testimonials</span>
             <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">Trusted by <span className="grad-text">500+</span> businesses</h2>
           </div>
@@ -338,7 +321,7 @@ export function HomePage() {
       </section>
 
       {/* ======= FINAL CTA ======= */}
-      <section className="py-20 sm:py-32 relative overflow-hidden">
+      <section className="py-12 sm:py-28 relative overflow-hidden">
         <div className="mesh w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-violet-600/[0.06]" />
         {/* Background image with heavy overlay */}
         <div className="absolute inset-0">
