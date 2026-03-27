@@ -1,4 +1,4 @@
-// High-quality Unsplash images â€” retina-ready with sharp quality
+// High-quality Unsplash images -- retina-ready with sharp quality
 export const IMAGES = {
   // Web / Development
   web1: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=90&auto=format&fit=crop",
@@ -21,7 +21,7 @@ export const IMAGES = {
   // Redesign
   redesign1: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1600&q=90&auto=format&fit=crop",
 
-  // People / Testimonials â€” higher res for crisp circles
+  // People / Testimonials -- higher res for crisp circles
   person1: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=256&q=90&auto=format&fit=crop&crop=face",
   person2: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=256&q=90&auto=format&fit=crop&crop=face",
   person3: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=256&q=90&auto=format&fit=crop&crop=face",

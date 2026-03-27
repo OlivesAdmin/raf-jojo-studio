@@ -24,7 +24,7 @@ export function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 lg:py-0 w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center">
             <div className="anim">
-              {/* OVERSIZED HEADLINE â€” straight to the point */}
+              {/* OVERSIZED HEADLINE -- straight to the point */}
               <h1 className="display text-[2.2rem] sm:text-[3.2rem] lg:text-[4rem] xl:text-[4.6rem] font-extrabold leading-[0.95] tracking-tight mb-4 sm:mb-5">
                 <span className="text-white">Digital</span><br className="hidden sm:block" />
                 <span className="text-white"> services,</span><br />
@@ -32,7 +32,7 @@ export function HomePage() {
               </h1>
 
               <p className="text-[16px] sm:text-[17px] text-white/50 leading-relaxed mb-5 sm:mb-7 max-w-[440px]">
-                Websites, branding, SEO & social media â€” with transparent pricing. Pick a package, pay, and we start building immediately.
+                Websites, branding, SEO & social media -- with transparent pricing. Pick a package, pay, and we start building immediately.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-2.5 mb-4 sm:mb-6">
@@ -46,7 +46,7 @@ export function HomePage() {
               </div>
             </div>
 
-            {/* Hero visual â€” shows actual work, not abstract art */}
+            {/* Hero visual -- shows actual work, not abstract art */}
             <div className="anim d2 relative">
               <div className="relative">
                 <div className="rounded-2xl overflow-hidden neu shadow-2xl shadow-violet-900/20">
@@ -60,7 +60,7 @@ export function HomePage() {
                 </div>
                 <div className="absolute -top-3 -right-2 sm:-top-4 sm:-right-4 neu rounded-xl p-3 sm:p-4 float" style={{animationDelay:'1.5s'}}>
                   <p className="text-[11px] sm:text-[14px] text-white/50 mb-0.5">Client Rating</p>
-                  <p className="display text-[18px] sm:text-[24px] font-extrabold text-amber-400">4.9â˜…</p>
+                  <p className="display text-[18px] sm:text-[24px] font-extrabold text-amber-400">4.9*</p>
                 </div>
               </div>
             </div>
@@ -83,7 +83,7 @@ export function HomePage() {
             </button>
           </div>
 
-          {/* Bento grid â€” large + small cards with images */}
+          {/* Bento grid -- large + small cards with images */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {categories.map((cat, i) => {
               const m = catMeta[cat.id];
@@ -133,7 +133,7 @@ export function HomePage() {
             <div>
               <span className="text-[14px] font-bold uppercase tracking-[0.3em] text-fuchsia-400/60 mb-2 block">Our Work</span>
               <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight leading-tight">Recent <span className="grad-text">projects</span></h2>
-              <p className="text-white/40 text-[14px] mt-2 max-w-sm">Real results from real clients â€” here's what we've delivered recently.</p>
+              <p className="text-white/40 text-[14px] mt-2 max-w-sm">Real results from real clients -- here's what we've delivered recently.</p>
             </div>
             <button onClick={()=>navigate("services")} className="text-[14px] font-medium text-white/40 hover:text-white/50 transition-colors mt-3 sm:mt-0 flex items-center gap-1.5">
               View all <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
@@ -143,29 +143,29 @@ export function HomePage() {
           {/* Bento-style project grid with real images */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             <div className="sm:col-span-2 lg:col-span-2">
-              <ProjectCard title="Bloom Beauty â€” E-commerce Website" category="Web Development" color="#7C3AED" imgSrc={IMG.web1} imgAlt="Modern e-commerce website on laptop" />
+              <ProjectCard title="Bloom Beauty -- E-commerce Website" category="Web Development" color="#7C3AED" imgSrc={IMG.web1} imgAlt="Modern e-commerce website on laptop" />
             </div>
             <div>
-              <ProjectCard title="TechFlow â€” Brand Identity" category="Logo Design" color="#EC4899" imgSrc={IMG.logo1} imgAlt="Brand identity design with color palette" />
+              <ProjectCard title="TechFlow -- Brand Identity" category="Logo Design" color="#EC4899" imgSrc={IMG.logo1} imgAlt="Brand identity design with color palette" />
             </div>
             <div>
-              <ProjectCard title="NovaPay â€” SEO Campaign" category="SEO / Search Boost" color="#F59E0B" imgSrc={IMG.seo1} imgAlt="Analytics dashboard showing growth metrics" />
+              <ProjectCard title="NovaPay -- SEO Campaign" category="SEO / Search Boost" color="#F59E0B" imgSrc={IMG.seo1} imgAlt="Analytics dashboard showing growth metrics" />
             </div>
             <div>
-              <ProjectCard title="FreshBite â€” Social Presence" category="Social Media" color="#EC4899" imgSrc={IMG.social1} imgAlt="Social media content on phone" />
+              <ProjectCard title="FreshBite -- Social Presence" category="Social Media" color="#EC4899" imgSrc={IMG.social1} imgAlt="Social media content on phone" />
             </div>
             <div>
-              <ProjectCard title="Artisan Co. â€” Website Redesign" category="Web Redesign" color="#7C3AED" imgSrc={IMG.redesign1} imgAlt="Website redesign on laptop workspace" />
+              <ProjectCard title="Artisan Co. -- Website Redesign" category="Web Redesign" color="#7C3AED" imgSrc={IMG.redesign1} imgAlt="Website redesign on laptop workspace" />
             </div>
           </div>
 
           {/* Quick stats under portfolio */}
           <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
             {[
-              {icon:"ðŸ’»", val:"120+", label:"Websites Built", color:"#7C3AED"},
-              {icon:"âœ¦", val:"85+", label:"Logos Designed", color:"#EC4899"},
-              {icon:"ðŸ“ˆ", val:"60+", label:"SEO Campaigns", color:"#F59E0B"},
-              {icon:"ðŸ“±", val:"40+", label:"Social Accounts", color:"#10B981"},
+              {icon:"💻", val:"120+", label:"Websites Built", color:"#7C3AED"},
+              {icon:"✦", val:"85+", label:"Logos Designed", color:"#EC4899"},
+              {icon:"📈", val:"60+", label:"SEO Campaigns", color:"#F59E0B"},
+              {icon:"📱", val:"40+", label:"Social Accounts", color:"#10B981"},
             ].map(s=>(
               <div key={s.label} className="neu rounded-xl p-4 sm:p-5 text-center">
                 <span className="text-[20px] sm:text-[24px] block mb-2">{s.icon}</span>
@@ -212,7 +212,7 @@ export function HomePage() {
           <div className="text-center mb-8 sm:mb-12">
             <span className="text-[14px] font-bold uppercase tracking-[0.3em] text-violet-400/60 mb-2 block">Pricing</span>
             <h2 className="display text-[1.5rem] sm:text-[2.2rem] lg:text-[2.8rem] font-extrabold tracking-tight">Website <span className="grad-text">Development</span></h2>
-            <p className="text-white/40 text-[14px] sm:text-[15px] mt-2">Our most popular service â€” pick a tier</p>
+            <p className="text-white/40 text-[14px] sm:text-[15px] mt-2">Our most popular service -- pick a tier</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 max-w-[1020px] mx-auto mb-10 sm:mb-16">
@@ -269,7 +269,7 @@ export function HomePage() {
                   <span className="text-[16px] text-white/30 line-through">${b.original_price.toLocaleString()}</span>
                 </div>
                 <ul className="space-y-2.5 mb-6">{b.services.map(slug=>{const sv=services.find(x=>x.slug===slug);return sv?<li key={slug} className="flex items-center gap-2.5 text-[15px] text-white/55"><span className="text-[16px]">{sv.icon}</span>{sv.name}</li>:null;})}</ul>
-                <button className="w-full py-3.5 text-[15px] font-bold text-white rounded-xl transition-all bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 shadow-lg shadow-emerald-600/20">Get Bundle â€” ${b.price.toLocaleString()}</button>
+                <button className="w-full py-3.5 text-[15px] font-bold text-white rounded-xl transition-all bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 shadow-lg shadow-emerald-600/20">Get Bundle -- ${b.price.toLocaleString()}</button>
               </div>
             ))}
           </div>
@@ -324,7 +324,7 @@ export function HomePage() {
           <div className="neu rounded-2xl p-6 sm:p-10 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-violet-600 via-fuchsia-500 to-amber-400" />
             <div className="text-center mb-8">
-              <span className="text-[40px] block mb-3">ðŸ’¬</span>
+              <span className="text-[40px] block mb-3">💬</span>
               <h2 className="display text-[1.4rem] sm:text-[1.8rem] font-extrabold text-white mb-2">Have questions?</h2>
               <p className="text-[15px] text-white/45">Not sure which package is right? Send us a message and we'll help you choose.</p>
             </div>
@@ -355,15 +355,15 @@ export function HomePage() {
             {/* Alternative contact methods */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-6" style={{borderTop:'1px solid rgba(255,255,255,0.04)'}}>
               <a href="https://wa.me/6581234567" target="_blank" rel="noopener" className="flex items-center gap-3 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/15 hover:bg-emerald-500/15 transition-colors">
-                <span className="text-[22px]">ðŸ’¬</span>
+                <span className="text-[22px]">💬</span>
                 <div><p className="text-[14px] font-bold text-emerald-400">WhatsApp</p><p className="text-[12px] text-white/30">Chat with us</p></div>
               </a>
               <a href="mailto:hello@rafandjojo.studio" className="flex items-center gap-3 p-3 rounded-xl bg-violet-500/10 border border-violet-500/15 hover:bg-violet-500/15 transition-colors">
-                <span className="text-[22px]">ðŸ“§</span>
+                <span className="text-[22px]">📧</span>
                 <div><p className="text-[14px] font-bold text-violet-400">Email</p><p className="text-[12px] text-white/30">hello@rafandjojo.studio</p></div>
               </a>
               <a href="https://calendly.com" target="_blank" rel="noopener" className="flex items-center gap-3 p-3 rounded-xl bg-amber-500/10 border border-amber-500/15 hover:bg-amber-500/15 transition-colors">
-                <span className="text-[22px]">ðŸ“…</span>
+                <span className="text-[22px]">📅</span>
                 <div><p className="text-[14px] font-bold text-amber-400">Book a Call</p><p className="text-[12px] text-white/30">Free 15-min consult</p></div>
               </a>
             </div>
@@ -381,7 +381,7 @@ export function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-14">
             {[
-              {n:"Sarah Chen",r:"Founder, Bloom Beauty",q:"Purchased Premium website â€” live in 12 days. Quality exceeded agencies I've paid 5x more.",a:"SC",c:"#7C3AED",img:IMG.person1},
+              {n:"Sarah Chen",r:"Founder, Bloom Beauty",q:"Purchased Premium website -- live in 12 days. Quality exceeded agencies I've paid 5x more.",a:"SC",c:"#7C3AED",img:IMG.person1},
               {n:"Marcus Rodriguez",r:"CEO, TechFlow",q:"Bought Gold logo, got 6 stunning concepts. Full brand kit in a week. Seamless experience.",a:"MR",c:"#EC4899",img:IMG.person2},
               {n:"Aisha Patel",r:"Marketing Dir, NovaPay",q:"SEO package moved us from page 3 to #1 for key terms. ROI has been phenomenal.",a:"AP",c:"#F59E0B",img:IMG.person3},
             ].map((t,i)=>(
