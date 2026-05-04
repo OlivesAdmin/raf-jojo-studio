@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lumen AI — Your second brain for focused work</title>
+    <meta
+      name="description"
+      content="Lumen AI organizes your notes, tasks, and meetings into a single AI-powered workspace so you can think faster and ship more."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["'Plus Jakarta Sans'", "system-ui", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                50: "#F0FDFA",
+                100: "#CCFBF1",
+                200: "#99F6E4",
+                400: "#2DD4BF",
+                500: "#14B8A6",
+                600: "#0D9488",
+                700: "#0F766E",
+                900: "#134E4A",
+              },
+              cta: {
+                500: "#F97316",
+                600: "#EA580C",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #f0fdfa;
+        color: #134e4a;
+      }
+      .aurora {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .aurora::before,
+      .aurora::after {
+        content: "";
+        position: absolute;
+        width: 60rem;
+        height: 60rem;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.55;
+      }
+      .aurora::before {
+        background: radial-gradient(circle, #2dd4bf 0%, transparent 60%);
+        top: -20rem;
+        left: -15rem;
+      }
+      .aurora::after {
+        background: radial-gradient(circle, #f97316 0%, transparent 60%);
+        top: -10rem;
+        right: -20rem;
+        opacity: 0.35;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.6) inset,
+          0 10px 30px -10px rgba(15, 118, 110, 0.18);
+      }
+      .glass-strong {
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .float {
+          animation: float 8s ease-in-out infinite;
+        }
+        .float-delay {
+          animation-delay: -3s;
+        }
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .focus-ring:focus-visible {
+        outline: 2px solid #0d9488;
+        outline-offset: 3px;
+        border-radius: 0.75rem;
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-900 focus:text-white focus:rounded-lg"
+    >
+      Skip to content
+    </a>
+
+    <!-- Floating navbar -->
+    <header class="fixed top-4 left-4 right-4 z-30">
+      <nav
+        class="glass mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-4 py-3 sm:px-6"
+        aria-label="Primary"
+      >
+        <a href="#" class="flex items-center gap-2 focus-ring" aria-label="Lumen AI home">
+          <span
+            class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-lg shadow-brand-600/30"
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v4" />
+              <path d="M12 18v4" />
+              <path d="M4.93 4.93l2.83 2.83" />
+              <path d="M16.24 16.24l2.83 2.83" />
+              <path d="M2 12h4" />
+              <path d="M18 12h4" />
+              <path d="M4.93 19.07l2.83-2.83" />
+              <path d="M16.24 7.76l2.83-2.83" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </span>
+          <span class="text-base font-bold tracking-tight text-brand-900">Lumen<span class="text-brand-600">AI</span></span>
+        </a>
+
+        <ul class="hidden items-center gap-7 md:flex" role="list">
+          <li><a href="#features" class="text-sm font-medium text-brand-900/80 hover:text-brand-700 transition-colors duration-200 focus-ring cursor-pointer">Features</a></li>
+          <li><a href="#workflow" class="text-sm font-medium text-brand-900/80 hover:text-brand-700 transition-colors duration-200 focus-ring cursor-pointer">Workflow</a></li>
+          <li><a href="#pricing" class="text-sm font-medium text-brand-900/80 hover:text-brand-700 transition-colors duration-200 focus-ring cursor-pointer">Pricing</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2">
+          <a
+            href="#"
+            class="hidden sm:inline-flex items-center rounded-xl px-3 py-2 text-sm font-medium text-brand-900/80 hover:text-brand-700 transition-colors duration-200 focus-ring cursor-pointer"
+          >Sign in</a>
+          <a
+            href="#cta"
+            class="inline-flex items-center gap-1.5 rounded-xl bg-cta-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-cta-500/30 hover:bg-cta-600 active:scale-[0.98] transition-colors duration-200 focus-ring cursor-pointer"
+          >
+            Start free
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main" class="relative pt-28 sm:pt-32">
+      <div class="aurora" aria-hidden="true"></div>
+
+      <!-- HERO -->
+      <section class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <div class="lg:col-span-7">
+            <span
+              class="glass inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-brand-700"
+            >
+              <span class="relative flex h-2 w-2">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-cta-500 opacity-60"></span>
+                <span class="relative inline-flex h-2 w-2 rounded-full bg-cta-500"></span>
+              </span>
+              New · Meeting recall in beta
+            </span>
+
+            <h1
+              class="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight text-brand-900 sm:text-5xl lg:text-6xl"
+            >
+              Your second brain for
+              <span class="relative inline-block">
+                <span class="relative z-10 bg-gradient-to-r from-brand-600 to-cta-500 bg-clip-text text-transparent">focused work</span>
+                <span class="absolute inset-x-0 bottom-1 -z-0 h-3 bg-cta-500/15 rounded-md" aria-hidden="true"></span>
+              </span>
+            </h1>
+
+            <p class="mt-5 max-w-xl text-base leading-relaxed text-brand-900/75 sm:text-lg">
+              Lumen pulls your notes, tasks and meetings into one calm workspace.
+              Ask anything in plain English — get answers, drafts, and next steps in seconds.
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="#cta"
+                class="inline-flex items-center gap-2 rounded-xl bg-cta-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-cta-500/30 hover:bg-cta-600 active:scale-[0.98] transition-colors duration-200 focus-ring cursor-pointer"
+              >
+                Start free — no card
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </a>
+              <a
+                href="#workflow"
+                class="glass inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-brand-900 hover:bg-white/80 transition-colors duration-200 focus-ring cursor-pointer"
+              >
+                <svg viewBox="0 0 24 24" class="h-4 w-4 text-brand-700" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                Watch 90-sec tour
+              </a>
+            </div>
+
+            <dl class="mt-10 grid max-w-md grid-cols-3 gap-6">
+              <div>
+                <dt class="text-xs font-medium uppercase tracking-wider text-brand-900/60">Avg. time saved</dt>
+                <dd class="mt-1 text-2xl font-bold text-brand-900">7h<span class="text-brand-600">/wk</span></dd>
+              </div>
+              <div>
+                <dt class="text-xs font-medium uppercase tracking-wider text-brand-900/60">Teams using</dt>
+                <dd class="mt-1 text-2xl font-bold text-brand-900">14k+</dd>
+              </div>
+              <div>
+                <dt class="text-xs font-medium uppercase tracking-wider text-brand-900/60">Rating</dt>
+                <dd class="mt-1 text-2xl font-bold text-brand-900">4.9<span class="text-brand-600">/5</span></dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Hero visual: stacked glass cards -->
+          <div class="relative lg:col-span-5">
+            <div class="relative h-[440px]">
+              <!-- Big card: AI answer -->
+              <div class="glass-strong absolute right-0 top-0 w-[88%] rounded-2xl p-5 float">
+                <div class="flex items-center gap-2">
+                  <span class="grid h-7 w-7 place-items-center rounded-lg bg-brand-600 text-white">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  </span>
+                  <p class="text-sm font-semibold">Ask Lumen</p>
+                </div>
+                <p class="mt-3 text-sm text-brand-900/85 leading-relaxed">
+                  Summarize Tuesday's product sync and pull out blockers for the design team.
+                </p>
+                <div class="mt-3 rounded-xl bg-brand-50/70 border border-brand-100 p-3 text-sm text-brand-900/80">
+                  3 blockers · 2 owners need a design review by Fri · token cost <span class="font-semibold text-brand-700">est. 0.4¢</span>
+                </div>
+                <div class="mt-3 flex flex-wrap gap-1.5">
+                  <span class="rounded-md bg-brand-100 px-2 py-1 text-xs font-medium text-brand-700">#product-sync</span>
+                  <span class="rounded-md bg-brand-100 px-2 py-1 text-xs font-medium text-brand-700">#design</span>
+                  <span class="rounded-md bg-cta-500/15 px-2 py-1 text-xs font-medium text-cta-600">@high-priority</span>
+                </div>
+              </div>
+
+              <!-- Small card: tasks -->
+              <div class="glass absolute left-0 bottom-0 w-[78%] rounded-2xl p-5 float float-delay">
+                <div class="flex items-center justify-between">
+                  <p class="text-xs font-semibold uppercase tracking-wider text-brand-900/60">Today</p>
+                  <span class="rounded-full bg-brand-600 px-2 py-0.5 text-[10px] font-bold text-white">5</span>
+                </div>
+                <ul class="mt-3 space-y-2.5" role="list">
+                  <li class="flex items-center gap-2.5">
+                    <span class="grid h-5 w-5 place-items-center rounded border border-brand-300 bg-white" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" class="h-3 w-3 text-brand-700" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </span>
+                    <span class="text-sm line-through text-brand-900/50">Review Q3 roadmap</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="h-5 w-5 rounded border border-brand-300 bg-white" aria-hidden="true"></span>
+                    <span class="text-sm text-brand-900/85">Draft launch announcement</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="h-5 w-5 rounded border-2 border-cta-500 bg-cta-500/10" aria-hidden="true"></span>
+                    <span class="text-sm font-semibold text-brand-900">Approve design review</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social proof -->
+        <div class="mt-16 sm:mt-20">
+          <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand-900/55">
+            Trusted by teams at
+          </p>
+          <ul class="mt-6 grid grid-cols-2 gap-x-8 gap-y-5 sm:grid-cols-3 lg:grid-cols-6 items-center" role="list">
+            <li class="text-center text-lg font-bold tracking-tight text-brand-900/70">Northwind</li>
+            <li class="text-center text-lg font-bold tracking-tight text-brand-900/70">Hyperloop</li>
+            <li class="text-center text-lg font-bold tracking-tight text-brand-900/70">Atlas&nbsp;Studio</li>
+            <li class="text-center text-lg font-bold tracking-tight text-brand-900/70">Mercer&Co</li>
+            <li class="text-center text-lg font-bold tracking-tight text-brand-900/70">Outpost</li>
+            <li class="text-center text-lg font-bold tracking-tight text-brand-900/70">Riverbed</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section id="features" class="relative mx-auto mt-24 max-w-6xl px-4 sm:px-6 lg:px-8 sm:mt-32">
+        <div class="max-w-2xl">
+          <span class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Features</span>
+          <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-brand-900 sm:text-4xl">
+            Everything you need. Nothing in your way.
+          </h2>
+          <p class="mt-3 text-base text-brand-900/70">
+            Three core surfaces, designed to feel like one tool. Each is keyboard-driven, accessible by default, and respects your reduced-motion preference.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-5 md:grid-cols-3">
+          <!-- Feature 1 -->
+          <article class="glass group rounded-2xl p-6 transition-colors duration-200 hover:bg-white/85 cursor-default">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-brand-600 text-white shadow-md shadow-brand-600/30">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </span>
+            <h3 class="mt-5 text-lg font-bold text-brand-900">Living notes</h3>
+            <p class="mt-2 text-sm leading-relaxed text-brand-900/75">
+              Markdown that talks back. Ask any note for a summary, missing context, or a draft reply.
+            </p>
+            <a href="#" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-200 focus-ring cursor-pointer">
+              Read the docs
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+          </article>
+
+          <!-- Feature 2 -->
+          <article class="glass group rounded-2xl p-6 transition-colors duration-200 hover:bg-white/85 cursor-default">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-cta-500 text-white shadow-md shadow-cta-500/30">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </span>
+            <h3 class="mt-5 text-lg font-bold text-brand-900">Calm planner</h3>
+            <p class="mt-2 text-sm leading-relaxed text-brand-900/75">
+              A weekly plan that moves with you. Spillover handled, deep-work blocks protected.
+            </p>
+            <a href="#" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-200 focus-ring cursor-pointer">
+              See it in action
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+          </article>
+
+          <!-- Feature 3 -->
+          <article class="glass group rounded-2xl p-6 transition-colors duration-200 hover:bg-white/85 cursor-default">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-brand-700 text-white shadow-md shadow-brand-700/30">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+              </svg>
+            </span>
+            <h3 class="mt-5 text-lg font-bold text-brand-900">Meeting recall</h3>
+            <p class="mt-2 text-sm leading-relaxed text-brand-900/75">
+              Searchable transcripts, decisions extracted automatically, follow-ups assigned.
+            </p>
+            <a href="#" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-200 focus-ring cursor-pointer">
+              Try the beta
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- WORKFLOW (extra context block to make the page feel real) -->
+      <section id="workflow" class="relative mx-auto mt-24 max-w-6xl px-4 sm:px-6 lg:px-8 sm:mt-32">
+        <div class="glass-strong rounded-3xl p-6 sm:p-10">
+          <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">How it works</span>
+              <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-brand-900 sm:text-4xl">
+                One inbox for your thinking.
+              </h2>
+              <ol class="mt-6 space-y-5" role="list">
+                <li class="flex gap-4">
+                  <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-600 font-bold text-white">1</span>
+                  <div>
+                    <p class="font-semibold text-brand-900">Capture in one keystroke</p>
+                    <p class="mt-0.5 text-sm text-brand-900/70">Press <kbd class="rounded border border-brand-200 bg-white px-1.5 py-0.5 text-xs font-semibold text-brand-900">⌘&nbsp;K</kbd> from anywhere — note, task, or voice memo.</p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-600 font-bold text-white">2</span>
+                  <div>
+                    <p class="font-semibold text-brand-900">Ask anything</p>
+                    <p class="mt-0.5 text-sm text-brand-900/70">Lumen searches across notes, meetings and chats — answers cite their sources.</p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-cta-500 font-bold text-white">3</span>
+                  <div>
+                    <p class="font-semibold text-brand-900">Ship it</p>
+                    <p class="mt-0.5 text-sm text-brand-900/70">Drafts, summaries, and follow-ups land in the right place — Slack, Linear, email.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="relative">
+              <div class="glass rounded-2xl p-5">
+                <div class="flex items-center gap-2 border-b border-brand-100 pb-3">
+                  <span class="h-2.5 w-2.5 rounded-full bg-brand-200"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-brand-200"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-brand-200"></span>
+                  <span class="ml-2 text-xs font-semibold text-brand-900/60">lumen · ⌘ K</span>
+                </div>
+                <div class="mt-4 space-y-3 font-mono text-sm">
+                  <p class="text-brand-700"><span class="text-brand-900/40">›</span> what blocked launch this week?</p>
+                  <p class="text-brand-900/85">3 items blocked launch in <span class="font-semibold text-brand-700">#growth</span>:</p>
+                  <ul class="space-y-1.5 pl-4 text-brand-900/85" role="list">
+                    <li>• billing migration · waiting on @maya</li>
+                    <li>• copy review · 2 sections left</li>
+                    <li>• analytics dashboards · scheduled tue</li>
+                  </ul>
+                  <p class="text-brand-900/55 text-xs">sources: 4 notes · 2 meetings</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section id="cta" class="relative mx-auto mt-24 max-w-6xl px-4 sm:px-6 lg:px-8 sm:mt-32">
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-700 via-brand-600 to-brand-500 p-8 sm:p-14 text-white shadow-2xl shadow-brand-700/30">
+          <div class="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-cta-500/30 blur-3xl" aria-hidden="true"></div>
+          <div class="relative grid gap-8 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Start with a clearer week.
+              </h2>
+              <p class="mt-3 max-w-md text-white/85">
+                Free for individuals. 14 days of Pro on every team workspace. Cancel anytime.
+              </p>
+            </div>
+            <form class="flex flex-col gap-3 sm:flex-row sm:items-center" aria-label="Sign up for Lumen AI">
+              <label for="cta-email" class="sr-only">Email address</label>
+              <input
+                id="cta-email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+                placeholder="you@company.com"
+                class="glass-strong w-full rounded-xl px-4 py-3 text-sm text-brand-900 placeholder:text-brand-900/45 focus-ring sm:flex-1"
+              />
+              <button
+                type="submit"
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-cta-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-cta-500/40 hover:bg-cta-600 active:scale-[0.98] transition-colors duration-200 focus-ring cursor-pointer"
+              >
+                Start free
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mx-auto mt-20 max-w-6xl px-4 sm:px-6 lg:px-8 pb-10">
+        <div class="flex flex-col items-center justify-between gap-4 border-t border-brand-100 pt-8 sm:flex-row">
+          <p class="text-sm text-brand-900/60">© 2026 Lumen AI · Built with the UI/UX Pro Max skill.</p>
+          <ul class="flex items-center gap-5 text-sm" role="list">
+            <li><a href="#" class="text-brand-900/70 hover:text-brand-900 transition-colors duration-200 focus-ring cursor-pointer">Privacy</a></li>
+            <li><a href="#" class="text-brand-900/70 hover:text-brand-900 transition-colors duration-200 focus-ring cursor-pointer">Terms</a></li>
+            <li><a href="#" class="text-brand-900/70 hover:text-brand-900 transition-colors duration-200 focus-ring cursor-pointer">Status</a></li>
+          </ul>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
